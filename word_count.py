@@ -13,8 +13,14 @@
 #     ('text2.txt'. 'hypotheses.')
 #   ]
 #
+import os
 def load_input(input_directory):
-    pass
+    lines = []
+    for filename in os.listdir(input_directory):
+        with open(os.path.join(input_directory, filename), 'r') as f:
+            lines.append([line.strip() for line in f.readlines()])
+    
+    return lines
 
 
 #
