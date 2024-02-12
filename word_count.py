@@ -13,16 +13,22 @@
 #     ('text2.txt'. 'hypotheses.')
 #   ]
 #
+import glob
 import os
 def load_input(input_directory):
+
+    filenames = glob.glob(input_directory + '/*.*')
     lines = []
-    for filename in os.listdir(input_directory):
-        with open(os.path.join(input_directory, filename), 'r') as f:
-            lines.append([line.strip() for line in f.readlines()])
-    
-    return lines
 
+    for file in filenames:
+        with open(file) as f:
+            lines += [line.strip() for line in f.readlines()]
 
+    # return lines
+
+    print(lines)
+
+load_input('input/')
 #
 # Escriba una función llamada maper que recibe una lista de tuplas de la
 # función anterior y retorna una lista de tuplas (clave, valor). En este caso,
